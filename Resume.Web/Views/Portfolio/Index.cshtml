@@ -1,0 +1,15 @@
+﻿@model PortfolioPageViewModel
+
+<div class="section mt-0">
+    <h1 class="title title--h1 title__separate">نمونه کارها</h1>
+</div>
+
+@if (Model.PortfolioCategoryList != null && Model.PortfolioCategoryList.Any())
+{
+    <partial name="Partials/_CategoryPartial" model="@Model.PortfolioCategoryList" />
+}
+
+@if (Model.PortfolioList != null && Model.PortfolioList.Any())
+{
+    <partial name="Partials/_PortfolioPartial" model="@Model.PortfolioList" />
+}

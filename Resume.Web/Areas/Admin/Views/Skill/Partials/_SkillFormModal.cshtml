@@ -1,0 +1,89 @@
+﻿@model UpsertSkillViewModel
+@{
+    bool isCreate = Model.Id == 0 ? true : false;
+}
+
+<!-- Start Form -->
+<form id="SkillForm" asp-area="Admin" asp-controller="Skill" asp-action="SubmitSkillFormModal"
+      data-ajax="true" data-ajax-begin="StartLoading" data-ajax-success="SkillFormSubmited">
+    <!--Modal Header-->
+    <div class="modal-header">
+        <h5 class="modal-title">@(isCreate ? "ایجاد" : "ویرایش")</h5>
+    </div>
+
+    <!--Modal Body-->
+    <div class="modal-body">
+
+        <div class="form-validation">
+
+            <div class="row">
+                <div class="col-xl-12">
+
+                    @if (!isCreate)
+                    {
+                        <input type="hidden" asp-for="Id" />
+                    }
+
+                    <div class="mb-3 row">
+                        <label class="col-lg-3 col-form-label" asp-for="Title">
+                            @Html.DisplayNameFor(t => Model.Title)
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" asp-for="Title">
+
+                            @* <div class="invalid-feedback">
+                                <span asp-validation-for="Title"></span>
+                            </div> *@
+                            <small>
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label class="col-lg-3 col-form-label" asp-for="Percentage">
+                            @Html.DisplayNameFor(t => Model.Percentage)
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" asp-for="Percentage">
+
+                            <small>
+                                <span asp-validation-for="Percentage" class="text-danger"></span>
+                            </small>
+                        </div>
+                    </div>Z
+
+                    <div class="mb-3 row">
+                        <label class="col-lg-3 col-form-label" asp-for="Order">
+                            @Html.DisplayNameFor(t => Model.Order)
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-9">
+                            <input type="number" class="form-control" asp-for="Order">
+
+                            <small>
+                                <span asp-validation-for="Order" class="text-danger"></span>
+                            </small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--Modal Footer-->
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">
+            بستن
+        </button>
+        <button type="submit" class="btn @(isCreate ? "btn-success" : "btn-primary")">
+            @(isCreate ? "ذخیره اطلاعات" : "ویرایش اطلاعات")
+        </button>
+    </div>
+</form>
+<!--End Form-->

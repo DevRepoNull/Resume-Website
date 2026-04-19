@@ -1,0 +1,157 @@
+﻿@model UpsertPortfolioViewModel
+@{
+    bool isCreate = Model.Id == 0 ? true : false;
+}
+
+<!-- Start Form -->
+<form id="PortfolioForm" asp-area="Admin" asp-controller="Portfolio" asp-action="SubmitPortfolioFormModal"
+      data-ajax="true" data-ajax-begin="StartLoading" data-ajax-success="PortfolioFormSubmited">
+    <!--Modal Header-->
+    <div class="modal-header">
+        <h5 class="modal-title">@(isCreate ? "ایجاد" : "ویرایش")</h5>
+    </div>
+
+    <!--Modal Body-->
+    <div class="modal-body">
+
+        <div class="form-validation">
+
+            <div class="row">
+                <div class="col-xl-12">
+                    <input type="hidden" asp-for="Image" id="Image" />
+                    @* <input type="hidden" asp-for="PortfolioCategoryId" /> *@
+
+                    @if (!isCreate)
+                    {
+                        <input type="hidden" asp-for="Id" />
+                    }
+
+                    <div class="mb-3 row">
+                        <label class="col-lg-3 col-form-label" asp-for="Title">
+                            @Html.DisplayNameFor(t => Model.Title)
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" asp-for="Title">
+
+                            @* <div class="invalid-feedback">
+                                <span asp-validation-for="Title"></span>
+                            </div> *@
+                            <small>
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label class="col-lg-3 col-form-label" asp-for="AltImage">
+                            @Html.DisplayNameFor(t => Model.AltImage)
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" asp-for="AltImage">
+
+                            <small>
+                                <span asp-validation-for="AltImage" class="text-danger"></span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label class="col-lg-3 col-form-label" asp-for="Link">
+                            @Html.DisplayNameFor(t => Model.Link)
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" asp-for="Link">
+
+                            <small>
+                                <span asp-validation-for="Link" class="text-danger"></span>
+                            </small>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3 row">
+                        <label class="col-lg-3 col-form-label" asp-for="PortfolioCategoryId">
+                            @Html.DisplayNameFor(m => m.PortfolioCategoryId)
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <div class="col-lg-9">
+                            <select class="form-control"
+                                    asp-for="PortfolioCategoryId"
+                                    asp-items="@(new SelectList(Model.PortfolioCategory, "Id", "Title"))">
+                                <option value="">لطفا انتخاب کنید</option>
+                            </select>
+
+                            <small>
+                                <span asp-validation-for="PortfolioCategoryId" class="text-danger"></span>
+                            </small>
+                        </div>
+                    </div>
+
+                    @* <div class="mb-3 row">
+                        @foreach (var item in Model.PortfolioCategory)
+                        {
+                            <label class="col-lg-3 col-form-label" asp-for="Link">
+                                @Html.DisplayNameFor(t => item.Title)
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-lg-9">
+                                <input type="number" class="form-control" asp-for="PortfolioCategory">
+
+                                <small>
+                                    <span asp-validation-for="" class="text-danger"></span>
+                                </small>
+                            </div>
+                        }
+                    </div> *@
+                    
+                    <div class="mb-3 row">
+                        <label class="col-lg-3 col-form-label" asp-for="Order">
+                            @Html.DisplayNameFor(t => Model.Order)
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-9">
+                            <input type="number" class="form-control" asp-for="Order">
+
+                            <small>
+                                <span asp-validation-for="Order" class="text-danger"></span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label class="col-lg-3 col-form-label" for="image-uploader">
+                            @Html.DisplayNameFor(t => Model.Image)
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-9">
+                            <input type="file" name="image-uploader" id="image-uploader" class="form-control" />
+
+                            <small>
+                                <span asp-validation-for="Image" class="text-danger"></span>
+                            </small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--Modal Footer-->
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">
+            بستن
+        </button>
+        <button type="submit" class="btn @(isCreate ? "btn-success" : "btn-primary")">
+            @(isCreate ? "ذخیره اطلاعات" : "ویرایش اطلاعات")
+        </button>
+    </div>
+</form>
+<!--End Form-->
+
+<script src="~/panel/custome/PortfolioAjaxImageUploader.js"></script>

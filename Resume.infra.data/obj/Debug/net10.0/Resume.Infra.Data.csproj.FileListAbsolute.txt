@@ -1,0 +1,17 @@
+C:\PrivateFiles\Repository\C#\ArianResume\ResumeWebsite\Resume.infra.data\bin\Debug\net10.0\Resume.Infra.Data.deps.json
+C:\PrivateFiles\Repository\C#\ArianResume\ResumeWebsite\Resume.infra.data\bin\Debug\net10.0\Resume.Infra.Data.runtimeconfig.json
+C:\PrivateFiles\Repository\C#\ArianResume\ResumeWebsite\Resume.infra.data\bin\Debug\net10.0\Resume.Infra.Data.dll
+C:\PrivateFiles\Repository\C#\ArianResume\ResumeWebsite\Resume.infra.data\bin\Debug\net10.0\Resume.Infra.Data.pdb
+C:\PrivateFiles\Repository\C#\ArianResume\ResumeWebsite\Resume.infra.data\bin\Debug\net10.0\Resume.Domain.dll
+C:\PrivateFiles\Repository\C#\ArianResume\ResumeWebsite\Resume.infra.data\bin\Debug\net10.0\Resume.Domain.pdb
+C:\PrivateFiles\Repository\C#\ArianResume\ResumeWebsite\Resume.infra.data\obj\Debug\net10.0\Resume.Infra.Data.csproj.AssemblyReference.cache
+C:\PrivateFiles\Repository\C#\ArianResume\ResumeWebsite\Resume.infra.data\obj\Debug\net10.0\Resume.Infra.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\PrivateFiles\Repository\C#\ArianResume\ResumeWebsite\Resume.infra.data\obj\Debug\net10.0\Resume.Infra.Data.AssemblyInfoInputs.cache
+C:\PrivateFiles\Repository\C#\ArianResume\ResumeWebsite\Resume.infra.data\obj\Debug\net10.0\Resume.Infra.Data.AssemblyInfo.cs
+C:\PrivateFiles\Repository\C#\ArianResume\ResumeWebsite\Resume.infra.data\obj\Debug\net10.0\Resume.Infra.Data.csproj.CoreCompileInputs.cache
+C:\PrivateFiles\Repository\C#\ArianResume\ResumeWebsite\Resume.infra.data\obj\Debug\net10.0\Resume.I.DBF268E8.Up2Date
+C:\PrivateFiles\Repository\C#\ArianResume\ResumeWebsite\Resume.infra.data\obj\Debug\net10.0\Resume.Infra.Data.dll
+C:\PrivateFiles\Repository\C#\ArianResume\ResumeWebsite\Resume.infra.data\obj\Debug\net10.0\refint\Resume.Infra.Data.dll
+C:\PrivateFiles\Repository\C#\ArianResume\ResumeWebsite\Resume.infra.data\obj\Debug\net10.0\Resume.Infra.Data.pdb
+C:\PrivateFiles\Repository\C#\ArianResume\ResumeWebsite\Resume.infra.data\obj\Debug\net10.0\Resume.Infra.Data.genruntimeconfig.cache
+C:\PrivateFiles\Repository\C#\ArianResume\ResumeWebsite\Resume.infra.data\obj\Debug\net10.0\ref\Resume.Infra.Data.dll

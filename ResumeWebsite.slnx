@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/Application/">
+    <Project Path="Resume.Application/Resume.Application.csproj" />
+  </Folder>
+  <Folder Name="/Domain/">
+    <Project Path="Resume.Domain/Resume.Domain.csproj" />
+  </Folder>
+  <Folder Name="/Infra.Data/">
+    <Project Path="Resume.infra.data/Resume.Infra.Data.csproj" />
+  </Folder>
+  <Folder Name="/Infra.IOC/">
+    <Project Path="Resume.Infra.Ioc/Resume.Infra.Ioc.csproj" />
+  </Folder>
+  <Folder Name="/Presentation/">
+    <Project Path="Resume.Web/Resume.Web.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    @await Component.InvokeAsync("MetaTag")
+    <partial name="Partials/_HeaderRefrencesPartial"/>
+</head>
+
+<body class="bg-triangles-2">
+
+<partial name="Partials/_PreloaderPartial"/>
+
+<main class="main">
+
+    <partial name="Partials/_MenuPartial"/>
+
+    <div class="wrapper">
+
+        @await Component.InvokeAsync("SideBar")
+
+        <div class="content js-scroll">
+            @RenderBody()
+        </div>
+
+    </div>
+
+</main>
+
+<partial name="Partials/_FooterRefrencePartial"/>
+
+@await RenderSectionAsync("Script", false)
+
+</body>
+
+</html>

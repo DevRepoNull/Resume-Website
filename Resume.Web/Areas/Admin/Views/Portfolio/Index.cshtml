@@ -1,0 +1,111 @@
+﻿@model List<PortfolioViewModel>
+@{
+    var thing = Model.FirstOrDefault();
+    ViewData["Title"] = "لیست نمونه کارهای من";
+}
+
+<div class="container-fluid">
+
+    <!--Header Bread camp-->
+    <div class="row page-titles">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active">
+                <a href="javascript:void(0)">@ViewData["Title"]</a>
+            </li>
+        </ol>
+    </div>
+
+    <!--Main-->
+    <div class="row">
+
+        <!--Table Column-->
+        <div class="col-12" id="data-table-box">
+            <div class="card">
+
+                <!--Card Header-->
+                <div class="card-header">
+                    <h4 class="card-title">@ViewData["Title"]</h4>
+                </div>
+
+                <!--Card Body-->
+                <div class="card-body">
+
+                    <!--Bootstrap Modal-->
+                    <div class="bootstrap-modal">
+                        <!--Modal Button-->
+                        @* <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg">
+                            مودال گسترده
+                        </button> *@
+
+                        <!--Modal Content-->
+                        <div class="modal fade bd-example-modal-lg" id="modal-main" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+
+                                <!--Modal Content-->
+                                <div class="modal-content" id="modal-main-content">
+                                    @* <partial name="Partials/_PortfolioFormModal" model="new UpsertPortfolioViewModel()" /> *@
+                                    
+                                    <partial name="Partials/_PortfolioFormModal" 
+                                             model="new UpsertPortfolioViewModel { PortfolioCategory = new List<PortfolioCategoryViewModel>() }" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table id="example3" class="display" style="min-width: 845px">
+                            @if (Model != null && Model.Any())
+                            {
+                                <thead>
+                                    <tr>
+                                        <th>@Html.DisplayNameFor(t => thing.Image)</th>
+                                        <th>@Html.DisplayNameFor(t => thing.Title)</th>
+                                        <th>@Html.DisplayNameFor(t => thing.AltImage)</th>
+                                        <th>@Html.DisplayNameFor(t => thing.Link)</th>
+                                        <th>@Html.DisplayNameFor(t => thing.PortfolioCategoryLatinTitle)</th>
+                                        <th>@Html.DisplayNameFor(t => thing.Order)</th>
+                                        <th>عملیات</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (PortfolioViewModel item in Model)
+                                    {
+                                        <tr id="ListItem-@(item.Id)">
+                                            <td>
+                                                <img src="@(string.IsNullOrWhiteSpace(item.Image) ? FilePaths.Portfolio : $"{FilePaths.Portfolio}{item.Image}")" width="150" height="150" />
+                                            </td>
+                                            <td>@item.Title</td>
+                                            <td>@item.AltImage</td>
+                                            <td>@item.Link</td>
+                                            <td>@item.PortfolioCategoryLatinTitle</td>
+                                            <td>@item.Order</td>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <a href="javascript:void(0)" onclick="LoadPortfolioFormModal(0)" class="btn btn-success shadow btn-xs sharp me-1">
+                                                        <i class="fa fa-plus"></i>
+                                                    </a>
+                                                    <a href="javascript:void(0)" onclick="LoadPortfolioFormModal('@item.Id')" class="btn btn-primary shadow btn-xs sharp me-1">
+                                                        <i class="fa fa-pencil"></i>
+                                                    </a>
+                                                    <a href="javascript:void(0)" onclick="DeletePortfolio('@item.Id')" class="btn btn-danger shadow btn-xs sharp me-1">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            }
+                            else
+                            {
+                                <p class="text text-danger">داده ای نداری</p>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

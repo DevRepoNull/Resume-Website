@@ -1,0 +1,106 @@
+@using Resume.Domain.ViewModels.Information
+@model CreateMessageViewModel
+
+@{
+    bool? formSubmitResult = ViewData["FormSubmitResult"] as bool?;
+    var information = ViewData["Information"] as InformationViewModel;
+}
+
+@section Script{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+
+    <!-- این اسکریپت برای کار کردن دکمه رفرش کپچا الزامیه! -->
+    <script src="~/lib/jquery-ajax-unobtrusive/dist/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/lib/sweetalert/sweetalert2.min.js"></script>
+
+     @if (formSubmitResult != null && formSubmitResult == true)
+     {
+         <script>
+             Swal.fire({
+                 title: 'موفق',
+                 text: 'پیام شما با موفقیت ارسال شد',
+                 icon: 'success',
+                 confirmButtonText: 'باشه'
+             });
+             
+             document.getElementById("Name").value = "";
+             document.getElementById("Email").value = "";
+             document.getElementById("Text").value = "";
+         </script>
+     }
+     else if (formSubmitResult != null && formSubmitResult == false)
+     {
+         <script>
+             Swal.fire({
+                 title: 'ناموفق',
+                 text: 'recaptcha شما تایید نشد لطفا دوباره سعی کنید',
+                 icon: 'warning',
+                 confirmButtonText: 'باشه'
+             });
+         </script>
+     }
+}
+
+@if (!string.IsNullOrWhiteSpace(information.MapSrc))
+{
+    <div class="section mt-0">
+        <h1 class="title title--h1 title__separate">تماس با من</h1>
+    </div>
+    <div class="map section">
+        <iframe
+            src="@information.MapSrc"
+            height="450" style="border:0;" allowfullscreen=""></iframe>
+    </div>
+}
+
+<h2 class="title title--h2">فرم تماس</h2>
+
+<form class="contact-form" asp-controller="Contact" asp-action="Index" method="post">
+
+    <div class="row">
+
+        <div class="form-group col-12 col-md-6">
+            <i class="font-icon icon-user"></i>
+            <input asp-for="Name" class="input input__icon form-control" placeholder="نام و نام خانوادگی">
+            <small>
+                <span class="text-danger" asp-validation-for="Name"></span>
+            </small>
+        </div>
+
+        <div class="form-group col-12 col-md-6">
+            <i class="font-icon icon-at"></i>
+            <input asp-for="Email" class="input input__icon form-control" placeholder="آدرس ایمیل"/>
+            <small>
+                <span class="text-danger" asp-validation-for="Email"></span>
+            </small>
+        </div>
+
+        <div class="form-group col-12 col-md-12">
+            <textarea asp-for="Text" class="textarea form-control" placeholder="پیغام شما" rows="4"></textarea>
+            <small>
+                <span class="text-danger" asp-validation-for="Text"></span>
+            </small>
+        </div>
+
+        <!-- عرض رو به جای col-3 به col-12 در موبایل و col-md-4 یا 6 در دسکتاپ تغییر بدید -->
+        <div class="form-group col-12 col-md-6 col-lg-4 mb-3">
+            <partial name="Partials/_DntCaptchaPartial"/>
+
+            <small>
+                <span asp-validation-for="DNTCaptchaText" class="text-danger"></span>
+            </small>
+        </div>
+
+
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-12 col-md-12 order-1 order-md-2 text-left">
+            <button type="submit" class="btn"><i class="font-icon icon-send"></i>ارسال پیام</button>
+        </div>
+    </div>
+
+    <div class="row mb-5"></div>
+
+</form>

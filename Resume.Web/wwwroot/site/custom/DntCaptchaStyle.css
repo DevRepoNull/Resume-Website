@@ -1,0 +1,87 @@
+/* باکس بیرونی */
+.captcha-box {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 15px;
+    background: #fafafa;
+}
+
+/* ساختار اصلی */
+.captcha-container .input-group {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+/* ردیف عکس */
+.captcha-container .input-group-text {
+    flex: 0 0 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+/* تصویر کپچا */
+.captcha-container img {
+    height: 55px !important;
+    border-radius: 8px !important;
+    border: 1px solid #d1d5db !important;
+    background: #fff !important;
+}
+
+/* input کپچا */
+.captcha-container input.form-control {
+    flex: 1 1 auto !important;
+    min-width: 120px !important;
+    height: 45px !important;
+    border-radius: 8px !important;
+    border: 1px solid #ced4da !important;
+    text-align: center !important;
+    font-size: 20px !important;
+    letter-spacing: 5px !important;
+    font-weight: bold !important;
+    margin: 0 !important;
+    padding: 0 10px !important;
+    color: #333 !important;
+    overflow: hidden !important;
+}
+
+/* placeholder داخل کادر بماند */
+.captcha-container input::placeholder {
+    letter-spacing: normal !important;
+    font-size: 14px !important;
+    font-weight: normal !important;
+}
+
+/* دکمه رفرش */
+/*.captcha-container button.btn {*/
+/*    flex: 0 0 auto !important;*/
+/*    height: 45px !important;*/
+/*    padding: 0 14px !important;*/
+/*    border-radius: 8px !important;*/
+/*    background-color: #f3f4f6 !important;*/
+/*    color: #4b5563 !important;*/
+/*    font-size: 14px !important;*/
+/*    font-weight: 600 !important;*/
+/*    font-family: Tahoma, sans-serif !important;*/
+/*    border: 1px solid #ced4da !important;*/
+/*    margin: 0 !important;*/
+/*    display: flex !important;*/
+/*    align-items: center !important;*/
+/*    gap: 6px !important;*/
+/*}*/
+
+/* hover */
+/*.captcha-container button.btn:hover {*/
+/*    background: #e5e7eb !important;*/
+/*}*/
+
+/* آیکون رفرش */
+/*.captcha-container button.btn::before {*/
+/*    content: "↻";*/
+/*    font-size: 16px;*/
+/*}*/

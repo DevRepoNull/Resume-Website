@@ -1,0 +1,61 @@
+@model CreateMessageViewModel
+
+<div class="captcha-box">
+    <label class="form-label fw-semibold mb-2">
+        کد امنیتی
+    </label>
+
+    <div class="captcha-container">
+        <dnt-captcha
+            asp-captcha-generator-max="9999"
+            asp-captcha-generator-min="1000"
+            asp-captcha-generator-language="English"
+            asp-captcha-generator-display-mode="ShowDigits"
+            asp-font-name="Tahoma"
+            asp-font-size="24"
+            asp-placeholder="کد تصویر"
+            asp-validation-error-message="کد امنیتی اشتباه است."
+            asp-use-relative-urls="true"
+            @* asp-refresh-button-class="btn btn-primary" *@
+            asp-show-refresh-button="IsLayoutBeingRendered"
+            @* asp-refresh-button-text="↻" *@
+            asp-input-class="form-control"
+            asp-dir="rtl">
+        </dnt-captcha>
+    </div>
+</div>
+
+@* <div class="captcha-card shadow-sm p-3"> *@
+@* *@
+@*     <label class="form-label mb-2 fw-semibold text-secondary"> *@
+@*         کد امنیتی *@
+@*     </label> *@
+@* *@
+@*     <div class="captcha-row mb-3"> *@
+@*         <img class="captcha-img" *@
+@*              src="@Url.Content("~/DNTCaptchaImage")" *@
+@*              alt="captcha" *@
+@*              id="captchaImage" /> *@
+@* *@
+@* *@
+@*         <button type="button" class="btn btn-light captcha-refresh-btn"> *@
+@*             <i class="fas fa-sync-alt"></i> *@
+@*         </button> *@
+@*     </div> *@
+@* *@
+@*     <input asp-for="DNTCaptchaText" *@
+@*            class="form-control captcha-input" *@
+@*            placeholder="کد داخل تصویر را وارد کنید" /> *@
+@* *@
+@* </div> *@
+@* *@
+@* <script> *@
+@* document.querySelector(".captcha-refresh-btn") *@
+@*     .addEventListener("click", function () { *@
+@* *@
+@*         const img = document.getElementById("captchaImage"); *@
+@* *@
+@*         img.src = "/DNTCaptchaImage?" + new Date().getTime(); *@
+@* *@
+@*     }); *@
+@* </script> *@

@@ -1,0 +1,74 @@
+﻿@model List<MessageViewModel>
+@{
+    var thing = Model.FirstOrDefault();
+    ViewData["Title"] = "پیام های من";
+}
+
+<div class="container-fluid">
+
+    <!--Header Bread camp-->
+    <div class="row page-titles">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active">
+                <a href="javascript:void(0)">@ViewData["Title"]</a>
+            </li>
+        </ol>
+    </div>
+
+    <!--Main-->
+    <div class="row">
+
+        <!--Table Column-->
+        <div class="col-12" id="data-table-box">
+            <div class="card">
+
+                <!--Card Header-->
+                <div class="card-header">
+                    <h4 class="card-title">@ViewData["Title"]</h4>
+                </div>
+
+                <!--Card Body-->
+                <div class="card-body">
+
+                    <div class="table-responsive">
+                        <table id="example3" class="display" style="min-width: 845px">
+                            @if (Model != null && Model.Any())
+                            {
+                                <thead>
+                                    <tr>
+                                        <th>@Html.DisplayNameFor(t => thing.Name)</th>
+                                        <th>@Html.DisplayNameFor(t => thing.Email)</th>
+                                        <th>@Html.DisplayNameFor(t => thing.Text)</th>
+                                        <th>عملیات</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (MessageViewModel item in Model)
+                                    {
+                                        <tr id="ListItem-@(item.Id)">
+                                            <td>@item.Name</td>
+                                            <td>@item.Email</td>
+                                            <td>@item.Text</td>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <a href="javascript:void(0)" onclick="DeleteMessage('@item.Id')" class="btn btn-danger shadow btn-xs sharp me-1">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            }
+                            else
+                            {
+                                <p class="text text-danger">داده ای نداری</p>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,175 @@
+﻿@model UpsertInformationViewModel
+@{
+    bool isCreate = Model.Id == 0 ? true : false;
+}
+
+<!-- Start Form -->
+<form id="InformationForm" asp-area="Admin" asp-controller="Information" asp-action="SubmitInformationFormModal"
+      data-ajax="true" data-ajax-begin="StartLoading" data-ajax-success="InformationFormSubmited">
+    <!--Modal Header-->
+    <div class="modal-header">
+        <h5 class="modal-title">ویرایش</h5>
+    </div>
+
+    <!--Modal Body-->
+    <div class="modal-body">
+
+        <div class="form-validation">
+
+            <div class="row">
+                <div class="col-xl-12">
+                    <input type="hidden" asp-for="Avatar" id="Avatar" />
+                    <input type="hidden" asp-for="ResumeFile" id="ResumeFile" />
+
+                    @if (!isCreate)
+                    {
+                        <input type="hidden" asp-for="Id" />
+                    }
+
+                    <div class="mb-3 row">
+                        <label class="col-lg-3 col-form-label" asp-for="Name">
+                            @Html.DisplayNameFor(t => Model.Name)
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" asp-for="Name">
+
+                            <small>
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label class="col-lg-3 col-form-label" asp-for="EmailAddress">
+                            @Html.DisplayNameFor(t => Model.EmailAddress)
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" asp-for="EmailAddress">
+
+                            <small>
+                                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label class="col-lg-3 col-form-label" asp-for="DateOfBirth">
+                            @Html.DisplayNameFor(t => Model.DateOfBirth)
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" asp-for="DateOfBirth">
+
+                            <small>
+                                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                            </small>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3 row">
+                        <label class="col-lg-3 col-form-label" asp-for="Job">
+                            @Html.DisplayNameFor(t => Model.Job)
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" asp-for="Job">
+
+                            <small>
+                                <span asp-validation-for="Job" class="text-danger"></span>
+                            </small>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3 row">
+                        <label class="col-lg-3 col-form-label" asp-for="PhoeNumber">
+                            @Html.DisplayNameFor(t => Model.PhoeNumber)
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" asp-for="PhoeNumber">
+
+                            <small>
+                                <span asp-validation-for="PhoeNumber" class="text-danger"></span>
+                            </small>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3 row">
+                        <label class="col-lg-3 col-form-label" asp-for="Address">
+                            @Html.DisplayNameFor(t => Model.Address)
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-9">
+                            <textarea class="form-control" asp-for="Address"></textarea>
+
+                            <small>
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                            </small>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3 row">
+                        <label class="col-lg-3 col-form-label" asp-for="MapSrc">
+                            @Html.DisplayNameFor(t => Model.MapSrc)
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-9">
+                            <textarea type="text" class="form-control" asp-for="MapSrc"></textarea>
+
+                            <small>
+                                <span asp-validation-for="MapSrc" class="text-danger"></span>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label class="col-lg-3 col-form-label" for="image-uploader">
+                            @Html.DisplayNameFor(t => Model.Avatar)
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-9">
+                            <input type="file" name="image-uploader" id="image-uploader" class="form-control" />
+
+                            <small>
+                                <span asp-validation-for="Avatar" class="text-danger"></span>
+                            </small>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3 row">
+                        <label class="col-lg-3 col-form-label" for="resume-uploader">
+                            @Html.DisplayNameFor(t => Model.ResumeFile)
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-lg-9">
+                            <input type="file" name="resume-uploader" id="resume-uploader" class="form-control" />
+
+                            <small>
+                                <span asp-validation-for="ResumeFile" class="text-danger"></span>
+                            </small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--Modal Footer-->
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">
+            بستن
+        </button>
+        <button type="submit" class="btn btn-primary">
+            ویرایش
+        </button>
+    </div>
+</form>
+<!--End Form-->
+
+<script src="~/panel/custome/InformationAjaxImageUploader.js"></script>
+<script src="~/panel/custome/InformationAjaxResumeUploader.js"></script>

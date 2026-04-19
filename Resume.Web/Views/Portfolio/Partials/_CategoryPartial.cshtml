@@ -1,0 +1,17 @@
+@model List<PortfolioCategoryViewModel>
+
+<!-- Filter -->
+<div class="select section">
+    <span class="placeholder">دسته را انتخاب کنید</span>
+    <ul class="filter">
+        <li class="filter__item">دسته</li>
+        <li class="filter__item active" data-filter="*"><a class="filter__link active" href="#filter">همه</a></li>
+        @foreach (PortfolioCategoryViewModel item in Model)
+        {
+            <li class="filter__item" data-filter=".category-@item.LatinTitle">
+                <a class="filter__link" href="#filter">@item.Title</a>
+            </li>
+        }
+    </ul>
+    <input type="hidden" name="changemetoo">
+</div>

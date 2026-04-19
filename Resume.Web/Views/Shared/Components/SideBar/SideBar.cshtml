@@ -1,0 +1,78 @@
+@model Resume.Domain.ViewModels.ViewComponent.SideBarViewModel
+@using Resume.Domain.ViewModels.SocialMedia
+
+<!-- Sidebar -->
+<aside class="sidebar js-scroll">
+    <div>
+
+        <div class="avatar-wrap">
+            <svg class="avatar avatar--180" viewBox="0 0 188 188">
+                <g class="avatar__box">
+                    <image xlink:href="@(string.IsNullOrWhiteSpace(Model.InformationData.Avatar)
+                                           ? FilePaths.DefaultAvatar
+                                           : $"{FilePaths.Avatar}{Model.InformationData.Avatar}")" height="100%"
+                           width="100%"></image>
+                </g>
+            </svg>
+        </div>
+
+        <div class="text-center">
+            @if (!string.IsNullOrWhiteSpace(Model.InformationData.Name))
+            {
+                <h3 class="title sidebar__user-name">@Model.InformationData.Name</h3>   
+            }
+            
+            @if (!string.IsNullOrWhiteSpace(Model.InformationData.Job))
+            {
+                <div class="badge badge--gray">@Model.InformationData.Job</div>   
+            }
+
+            @if (Model.SocialMediaList != null && Model.SocialMediaList.Any())
+            {
+                <!-- Social -->
+                <div class="social">
+                    @foreach (SocialMediaViewModel item in Model.SocialMediaList)
+                    {
+                        <a class="social__link" href="@item.Link"><i class="font-icon icon-@item.Icon"></i></a>
+                    }
+                </div>
+            }
+
+        </div>
+
+        <ul class="contact-block">
+            @if (!string.IsNullOrWhiteSpace(Model.InformationData.DateOfBirth))
+            {
+                <li class="contact-block__item" data-toggle="tooltip" data-placement="top" title="روز تولد">
+                    <i class="font-icon icon-calendar2"></i>@Model.InformationData.DateOfBirth
+                </li>   
+            }
+            
+            @if (!string.IsNullOrWhiteSpace(Model.InformationData.Address))
+            {
+                <li class="contact-block__item" data-toggle="tooltip" data-placement="top" title="نشانی">
+                    <i class="font-icon icon-map-pin"></i>@Model.InformationData.Address
+                </li>
+            }
+            
+            @if (!string.IsNullOrWhiteSpace(Model.InformationData.EmailAddress))
+            {
+                <li class="contact-block__item" data-toggle="tooltip" data-placement="top" title="پست الکترونیک">
+                    <a href="mailto:example@mail.com"><i class="font-icon icon-mail"></i>@Model.InformationData.EmailAddress</a>
+                </li>
+            }
+            
+            @if (!string.IsNullOrWhiteSpace(Model.InformationData.PhoeNumber))
+            {
+                <li class="contact-block__item" data-toggle="tooltip" data-placement="top" title="تلفن">
+                    <i class="font-icon icon-smartphone"></i>@Model.InformationData.PhoeNumber
+                </li>
+            }
+            
+        </ul>
+    </div>
+    @if (!string.IsNullOrWhiteSpace(Model.InformationData.ResumeFile))
+    {
+        <a class="btn" href="@($"{FilePaths.Resume}{Model.InformationData.ResumeFile}")" download><i class="font-icon icon-download"></i>دانلود رزومه</a>
+    }
+</aside>
