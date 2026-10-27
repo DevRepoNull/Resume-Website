@@ -1,6 +1,6 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Resume.Application.Services.Interfaces;
-using Resume.Domain.ViewModels.ViewComponent;
+using Resume.Application.ViewModels.ViewComponent;
 
 namespace Resume.Web.ViewComponents;
 

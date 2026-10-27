@@ -3,7 +3,7 @@ using Resume.Application.Extensions;
 using Resume.Application.Generator;
 using Resume.Application.Services.Interfaces;
 using Resume.Application.StaticTools;
-using Resume.Domain.ViewModels.Portfolio;
+using Resume.Application.ViewModels.Portfolio;
 
 namespace Resume.Web.Areas.Admin.Controllers
 {

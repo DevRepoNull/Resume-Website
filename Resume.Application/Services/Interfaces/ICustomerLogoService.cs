@@ -1,5 +1,5 @@
 ﻿using Resume.Domain.Models;
-using Resume.Domain.ViewModels.CustomerLogo;
+using Resume.Application.ViewModels.CustomerLogo;
 
 namespace Resume.Application.Services.Interfaces;
 

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Web\\Resume.Web.csproj": {}
+    "D:\\DotNet\\Resume-Website\\Resume.Web\\Resume.Web.csproj": {}
   },
   "projects": {
-    "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Application\\Resume.Application.csproj": {
+    "D:\\DotNet\\Resume-Website\\Resume.Application\\Resume.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Application\\Resume.Application.csproj",
+        "projectUniqueName": "D:\\DotNet\\Resume-Website\\Resume.Application\\Resume.Application.csproj",
         "projectName": "Resume.Application",
-        "projectPath": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Application\\Resume.Application.csproj",
-        "packagesPath": "C:\\Users\\FullStack\\.nuget\\packages\\",
-        "outputPath": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Application\\obj\\",
+        "projectPath": "D:\\DotNet\\Resume-Website\\Resume.Application\\Resume.Application.csproj",
+        "packagesPath": "C:\\Users\\DevRepoNull\\.nuget\\packages\\",
+        "outputPath": "D:\\DotNet\\Resume-Website\\Resume.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\FullStack\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DevRepoNull\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -25,18 +25,16 @@
           "net10.0"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://mirror-nuget.runflare.com/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Domain\\Resume.Domain.csproj": {
-                "projectPath": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Domain\\Resume.Domain.csproj"
-              },
-              "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.infra.data\\Resume.Infra.Data.csproj": {
-                "projectPath": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.infra.data\\Resume.Infra.Data.csproj"
+              "D:\\DotNet\\Resume-Website\\Resume.Domain\\Resume.Domain.csproj": {
+                "projectPath": "D:\\DotNet\\Resume-Website\\Resume.Domain\\Resume.Domain.csproj"
               }
             }
           }
@@ -51,12 +49,17 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            },
             "HtmlSanitizer": {
               "target": "Package",
               "version": "[9.0.892, )"
@@ -64,6 +67,10 @@
             "Microsoft.AspNetCore.Http.Features": {
               "target": "Package",
               "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[10.0.5, )"
             },
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
@@ -86,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.402/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -364,20 +371,20 @@
         }
       }
     },
-    "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Domain\\Resume.Domain.csproj": {
+    "D:\\DotNet\\Resume-Website\\Resume.Domain\\Resume.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Domain\\Resume.Domain.csproj",
+        "projectUniqueName": "D:\\DotNet\\Resume-Website\\Resume.Domain\\Resume.Domain.csproj",
         "projectName": "Resume.Domain",
-        "projectPath": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Domain\\Resume.Domain.csproj",
-        "packagesPath": "C:\\Users\\FullStack\\.nuget\\packages\\",
-        "outputPath": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Domain\\obj\\",
+        "projectPath": "D:\\DotNet\\Resume-Website\\Resume.Domain\\Resume.Domain.csproj",
+        "packagesPath": "C:\\Users\\DevRepoNull\\.nuget\\packages\\",
+        "outputPath": "D:\\DotNet\\Resume-Website\\Resume.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\FullStack\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DevRepoNull\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -385,11 +392,12 @@
           "net10.0"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://mirror-nuget.runflare.com/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {}
           }
@@ -404,10 +412,11 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "imports": [
             "net461",
@@ -425,7 +434,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.402/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -703,20 +712,20 @@
         }
       }
     },
-    "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.infra.data\\Resume.Infra.Data.csproj": {
+    "D:\\DotNet\\Resume-Website\\Resume.infra.data\\Resume.Infra.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.infra.data\\Resume.Infra.Data.csproj",
+        "projectUniqueName": "D:\\DotNet\\Resume-Website\\Resume.infra.data\\Resume.Infra.Data.csproj",
         "projectName": "Resume.Infra.Data",
-        "projectPath": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.infra.data\\Resume.Infra.Data.csproj",
-        "packagesPath": "C:\\Users\\FullStack\\.nuget\\packages\\",
-        "outputPath": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.infra.data\\obj\\",
+        "projectPath": "D:\\DotNet\\Resume-Website\\Resume.infra.data\\Resume.Infra.Data.csproj",
+        "packagesPath": "C:\\Users\\DevRepoNull\\.nuget\\packages\\",
+        "outputPath": "D:\\DotNet\\Resume-Website\\Resume.infra.data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\FullStack\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DevRepoNull\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -724,15 +733,19 @@
           "net10.0"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://mirror-nuget.runflare.com/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Domain\\Resume.Domain.csproj": {
-                "projectPath": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Domain\\Resume.Domain.csproj"
+              "D:\\DotNet\\Resume-Website\\Resume.Application\\Resume.Application.csproj": {
+                "projectPath": "D:\\DotNet\\Resume-Website\\Resume.Application\\Resume.Application.csproj"
+              },
+              "D:\\DotNet\\Resume-Website\\Resume.Domain\\Resume.Domain.csproj": {
+                "projectPath": "D:\\DotNet\\Resume-Website\\Resume.Domain\\Resume.Domain.csproj"
               }
             }
           }
@@ -747,10 +760,11 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
@@ -792,7 +806,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.402/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -1070,20 +1084,20 @@
         }
       }
     },
-    "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Infra.Ioc\\Resume.Infra.Ioc.csproj": {
+    "D:\\DotNet\\Resume-Website\\Resume.Infra.Ioc\\Resume.Infra.Ioc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Infra.Ioc\\Resume.Infra.Ioc.csproj",
+        "projectUniqueName": "D:\\DotNet\\Resume-Website\\Resume.Infra.Ioc\\Resume.Infra.Ioc.csproj",
         "projectName": "Resume.Infra.Ioc",
-        "projectPath": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Infra.Ioc\\Resume.Infra.Ioc.csproj",
-        "packagesPath": "C:\\Users\\FullStack\\.nuget\\packages\\",
-        "outputPath": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Infra.Ioc\\obj\\",
+        "projectPath": "D:\\DotNet\\Resume-Website\\Resume.Infra.Ioc\\Resume.Infra.Ioc.csproj",
+        "packagesPath": "C:\\Users\\DevRepoNull\\.nuget\\packages\\",
+        "outputPath": "D:\\DotNet\\Resume-Website\\Resume.Infra.Ioc\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\FullStack\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DevRepoNull\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -1091,15 +1105,19 @@
           "net10.0"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://mirror-nuget.runflare.com/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Application\\Resume.Application.csproj": {
-                "projectPath": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Application\\Resume.Application.csproj"
+              "D:\\DotNet\\Resume-Website\\Resume.Application\\Resume.Application.csproj": {
+                "projectPath": "D:\\DotNet\\Resume-Website\\Resume.Application\\Resume.Application.csproj"
+              },
+              "D:\\DotNet\\Resume-Website\\Resume.infra.data\\Resume.Infra.Data.csproj": {
+                "projectPath": "D:\\DotNet\\Resume-Website\\Resume.infra.data\\Resume.Infra.Data.csproj"
               }
             }
           }
@@ -1114,10 +1132,11 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
@@ -1141,7 +1160,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.402/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -1419,20 +1438,20 @@
         }
       }
     },
-    "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Web\\Resume.Web.csproj": {
+    "D:\\DotNet\\Resume-Website\\Resume.Web\\Resume.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Web\\Resume.Web.csproj",
+        "projectUniqueName": "D:\\DotNet\\Resume-Website\\Resume.Web\\Resume.Web.csproj",
         "projectName": "Resume.Web",
-        "projectPath": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Web\\Resume.Web.csproj",
-        "packagesPath": "C:\\Users\\FullStack\\.nuget\\packages\\",
-        "outputPath": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Web\\obj\\",
+        "projectPath": "D:\\DotNet\\Resume-Website\\Resume.Web\\Resume.Web.csproj",
+        "packagesPath": "C:\\Users\\DevRepoNull\\.nuget\\packages\\",
+        "outputPath": "D:\\DotNet\\Resume-Website\\Resume.Web\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\FullStack\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DevRepoNull\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -1440,21 +1459,22 @@
           "net10.0"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://mirror-nuget.runflare.com/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Application\\Resume.Application.csproj": {
-                "projectPath": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Application\\Resume.Application.csproj"
+              "D:\\DotNet\\Resume-Website\\Resume.Application\\Resume.Application.csproj": {
+                "projectPath": "D:\\DotNet\\Resume-Website\\Resume.Application\\Resume.Application.csproj"
               },
-              "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.infra.data\\Resume.Infra.Data.csproj": {
-                "projectPath": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.infra.data\\Resume.Infra.Data.csproj"
+              "D:\\DotNet\\Resume-Website\\Resume.infra.data\\Resume.Infra.Data.csproj": {
+                "projectPath": "D:\\DotNet\\Resume-Website\\Resume.infra.data\\Resume.Infra.Data.csproj"
               },
-              "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Infra.Ioc\\Resume.Infra.Ioc.csproj": {
-                "projectPath": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Infra.Ioc\\Resume.Infra.Ioc.csproj"
+              "D:\\DotNet\\Resume-Website\\Resume.Infra.Ioc\\Resume.Infra.Ioc.csproj": {
+                "projectPath": "D:\\DotNet\\Resume-Website\\Resume.Infra.Ioc\\Resume.Infra.Ioc.csproj"
               }
             }
           }
@@ -1469,10 +1489,11 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
             "DNTCaptcha.Core": {
@@ -1525,7 +1546,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.402/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

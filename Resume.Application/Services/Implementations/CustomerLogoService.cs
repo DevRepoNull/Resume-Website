@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Resume.Application.Services.Interfaces;
 using Resume.Domain.Models;
-using Resume.Domain.ViewModels.CustomerLogo;
-using Resume.Infra.Data.Context;
+using Resume.Application.ViewModels.CustomerLogo;
+using Resume.Application.Context;
 
 namespace Resume.Application.Services.Implementations
 {
@@ -10,23 +10,23 @@ namespace Resume.Application.Services.Implementations
     {
         #region Customer Logo Constructor
 
-        private readonly AppDbContext _appDbContext;
+        private readonly IAppDbContext _IAppDbContext;
 
-        public CustomerLogoService(AppDbContext appDbContext)
+        public CustomerLogoService(IAppDbContext IAppDbContext)
         {
-            _appDbContext = appDbContext;
+            _IAppDbContext = IAppDbContext;
         }
 
         #endregion
 
         public async Task<CustomerLogo> GetCustomerLogoByIdAsync(long id)
         {
-            return await _appDbContext.CustomerLogos.FirstOrDefaultAsync(cl => cl.Id == id);
+            return await _IAppDbContext.CustomerLogos.FirstOrDefaultAsync(cl => cl.Id == id);
         }
 
         public async Task<List<CustomerLogoViewModel>> GetCustomerLogoDataForIndexAsync()
         {
-            List<CustomerLogoViewModel> data = await _appDbContext.CustomerLogos
+            List<CustomerLogoViewModel> data = await _IAppDbContext.CustomerLogos
                 .OrderBy(cl => cl.Order)
                 .Select(cl => new CustomerLogoViewModel()
                 {
@@ -72,8 +72,8 @@ namespace Resume.Application.Services.Implementations
                     Order = customerLogo.Order
                 };
 
-                await _appDbContext.CustomerLogos.AddAsync(newCustomerLogo);
-                await _appDbContext.SaveChangesAsync();
+                await _IAppDbContext.CustomerLogos.AddAsync(newCustomerLogo);
+                await _IAppDbContext.SaveChangesAsync();
                 return true;
             }
 
@@ -87,8 +87,8 @@ namespace Resume.Application.Services.Implementations
             currentCustomerLogo.Link = customerLogo.Link;
             currentCustomerLogo.Order = customerLogo.Order;
 
-            _appDbContext.CustomerLogos.Update(currentCustomerLogo);
-            await _appDbContext.SaveChangesAsync();
+            _IAppDbContext.CustomerLogos.Update(currentCustomerLogo);
+            await _IAppDbContext.SaveChangesAsync();
             return true;
         }
 
@@ -102,8 +102,8 @@ namespace Resume.Application.Services.Implementations
             if (result == null)
                 return false;
 
-            _appDbContext.CustomerLogos.Remove(result);
-            await _appDbContext.SaveChangesAsync();
+            _IAppDbContext.CustomerLogos.Remove(result);
+            await _IAppDbContext.SaveChangesAsync();
             return true;
         }
     }

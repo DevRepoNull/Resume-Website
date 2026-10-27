@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Resume.Application.Services.Interfaces;
-using Resume.Domain.ViewModels.SocialMedia;
+using Resume.Application.ViewModels.SocialMedia;
 
 namespace Resume.Web.Areas.Admin.Controllers
 {

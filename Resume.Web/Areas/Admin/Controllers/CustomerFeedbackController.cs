@@ -3,7 +3,7 @@ using Resume.Application.Extensions;
 using Resume.Application.Generator;
 using Resume.Application.Services.Interfaces;
 using Resume.Application.StaticTools;
-using Resume.Domain.ViewModels.CustomerFeedback;
+using Resume.Application.ViewModels.CustomerFeedback;
 
 namespace Resume.Web.Areas.Admin.Controllers
 {

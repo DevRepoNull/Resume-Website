@@ -1,17 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Resume.Application.Services.Interfaces;
 using Resume.Domain.Models;
-using Resume.Domain.ViewModels.ThingIDo;
-using Resume.Infra.Data.Context;
+using Resume.Application.ViewModels.ThingIDo;
+using Resume.Application.Context;
 
 namespace Resume.Application.Services.Implementations;
 
 public class ThingIDoService : IThingIDoService
 {
     // Constructor Dependencies
-    private readonly AppDbContext _appDb;
+    private readonly IAppDbContext _appDb;
 
-    public ThingIDoService(AppDbContext appDb)
+    public ThingIDoService(IAppDbContext appDb)
     {
         _appDb = appDb;
     }

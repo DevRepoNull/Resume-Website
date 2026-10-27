@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace Resume.Domain.Models;
 
@@ -12,11 +12,11 @@ public class Experience
     public string Title { get; set; }
 
     [Required]
-    [StringLength(5, MinimumLength = 5)]
+    [StringLength(50, MinimumLength = 4)]
     public string StartDate { get; set; }
 
     [Required]
-    [StringLength(5, MinimumLength = 5)]
+    [StringLength(50, MinimumLength = 4)]
     public string EndDate { get; set; }
 
     [Required]

@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Resume.Application.Services.Interfaces;
 using Resume.Domain.Models;
-using Resume.Domain.ViewModels.Information;
-using Resume.Infra.Data.Context;
+using Resume.Application.ViewModels.Information;
+using Resume.Application.Context;
 
 namespace Resume.Application.Services.Implementations;
 
@@ -10,27 +10,20 @@ public class InformationService : IInformationService
 {
     #region Information Constructor
 
-    private readonly AppDbContext _appDbContext;
+    private readonly IAppDbContext _IAppDbContext;
 
-    public InformationService(AppDbContext appDbContext)
+    public InformationService(IAppDbContext IAppDbContext)
     {
-        _appDbContext = appDbContext;
+        _IAppDbContext = IAppDbContext;
     }
 
     #endregion
 
-    // Target : We wanna to have a single information this site because we create resume web sties
-
     public async Task<InformationViewModel> GetInformationDataAsync()
     {
-        // if (information == null)
-        // {
-        //     return new InformationViewModel();
-        // }
-
         try
         {
-            InformationViewModel data = await _appDbContext.Informations
+            InformationViewModel data = await _IAppDbContext.Informations
                 .Select(info => new InformationViewModel()
                 {
                     Id = info.Id,
@@ -42,21 +35,21 @@ public class InformationService : IInformationService
                     Job = info.Job,
                     PhoeNumber = info.PhoeNumber,
                     ResumeFile = info.ResumeFile,
-                    MapSrc = info.MapSrc
+                    MapSrc = info.MapSrc,
+                    AboutMe = info.AboutMe
                 }).FirstOrDefaultAsync() ?? new InformationViewModel();
 
             return data;
         }
         catch
         {
-            //throw new Exception(e.Message);
             return new InformationViewModel();
         }
     }
 
     public async Task<Information> GetInformationModelAsync()
     {
-        return await _appDbContext.Informations.FirstOrDefaultAsync();
+        return await _IAppDbContext.Informations.FirstOrDefaultAsync();
     }
 
     public async Task<UpsertInformationViewModel> FillUpsertInformationViewModelAsync()
@@ -77,17 +70,19 @@ public class InformationService : IInformationService
             Job = information.Job,
             PhoeNumber = information.PhoeNumber,
             ResumeFile = information.ResumeFile,
-            MapSrc = information.MapSrc
+            MapSrc = information.MapSrc,
+            AboutMe = information.AboutMe
         };
     }
 
     public async Task<bool> UpsertInformationAsync(UpsertInformationViewModel information)
     {
-        if (information.Id == 0)
+        Information currentInformation = await GetInformationModelAsync();
+
+        if (currentInformation == null)
         {
-            Information newInformation = new Information()
+            currentInformation = new Information
             {
-                Id = information.Id,
                 Name = information.Name,
                 Address = information.Address,
                 Avatar = information.Avatar,
@@ -96,29 +91,29 @@ public class InformationService : IInformationService
                 Job = information.Job,
                 PhoeNumber = information.PhoeNumber,
                 ResumeFile = information.ResumeFile,
-                MapSrc = information.MapSrc
+                MapSrc = information.MapSrc,
+                AboutMe = information.AboutMe
             };
 
-            await _appDbContext.Informations.AddAsync(newInformation);
-            await _appDbContext.SaveChangesAsync();
-            return true;
+            await _IAppDbContext.Informations.AddAsync(currentInformation);
+        }
+        else
+        {
+            currentInformation.Name = information.Name;
+            currentInformation.Address = information.Address;
+            currentInformation.Avatar = information.Avatar;
+            currentInformation.DateOfBirth = information.DateOfBirth;
+            currentInformation.EmailAddress = information.EmailAddress;
+            currentInformation.Job = information.Job;
+            currentInformation.PhoeNumber = information.PhoeNumber;
+            currentInformation.ResumeFile = information.ResumeFile;
+            currentInformation.MapSrc = information.MapSrc;
+            currentInformation.AboutMe = information.AboutMe;
+
+            _IAppDbContext.Informations.Update(currentInformation);
         }
 
-        Information currentInformation = await GetInformationModelAsync();
-
-        currentInformation.Id = information.Id;
-        currentInformation.Name = information.Name;
-        currentInformation.Address = information.Address;
-        currentInformation.Avatar = information.Avatar;
-        currentInformation.DateOfBirth = information.DateOfBirth;
-        currentInformation.EmailAddress = information.EmailAddress;
-        currentInformation.Job = information.Job;
-        currentInformation.PhoeNumber = information.PhoeNumber;
-        currentInformation.ResumeFile = information.ResumeFile;
-        currentInformation.MapSrc = information.MapSrc;
-
-        _appDbContext.Informations.Update(currentInformation);
-        await _appDbContext.SaveChangesAsync();
+        await _IAppDbContext.SaveChangesAsync();
         return true;
     }
 }

@@ -1,7 +1,25 @@
-﻿<div class="header-content">
+<div class="header-content">
     <nav class="navbar navbar-expand">
         <div class="collapse navbar-collapse justify-content-between">
-
+            <div class="header-left">
+                <div class="dashboard_bar font-w600 fs-18">
+                    @ViewData["Title"]
+                </div>
+            </div>
+            <ul class="navbar-nav header-right d-flex align-items-center gap-2">
+                <li class="nav-item">
+                    <a asp-area="" asp-controller="Home" asp-action="Index" target="_blank" class="btn btn-sm btn-outline-primary" title="مشاهده وب‌سایت">
+                        <i class="fa fa-external-link-alt me-1"></i>
+                        <span>مشاهده وب‌سایت</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-area="" asp-controller="Account" asp-action="LogoutGet" class="btn btn-sm btn-danger light" title="خروج از حساب">
+                        <i class="fa fa-sign-out-alt me-1"></i>
+                        <span>خروج</span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </nav>
 </div>

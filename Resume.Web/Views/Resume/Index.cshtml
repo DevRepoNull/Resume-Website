@@ -1,12 +1,18 @@
-﻿@model ResumePageViewModel
+@model ResumePageViewModel
+@{
+    ViewData["Title"] = "رزومه و سوابق";
+    bool hasAnyData = (Model.EducationList != null && Model.EducationList.Any()) ||
+                      (Model.ExperienceList != null && Model.ExperienceList.Any()) ||
+                      (Model.SkillList != null && Model.SkillList.Any());
+}
 
 <div class="section mt-0">
-    <h1 class="title title--h1 title__separate">رزومه</h1>
+    <h1 class="title title--h1 title__separate">رزومه و سوابق</h1>
 </div>
 
 @if (Model.EducationList != null && Model.EducationList.Any())
 {
-    <partial name="Partials/_EducationPartial" model="@Model.EducationList"/>
+    <partial name="Partials/_EducationPartial" model="@Model.EducationList" />
 }
 
 @if (Model.ExperienceList != null && Model.ExperienceList.Any())
@@ -17,4 +23,12 @@
 @if (Model.SkillList != null && Model.SkillList.Any())
 {
     <partial name="Partials/_SkillPartial" model="@Model.SkillList" />
+}
+
+@if (!hasAnyData)
+{
+    <div class="section text-center py-5">
+        <i class="fas fa-file-alt fa-3x text-muted mb-3"></i>
+        <p class="text-muted">هنوز اطلاعاتی برای بخش رزومه ثبت نشده است.</p>
+    </div>
 }

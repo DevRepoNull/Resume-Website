@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Resume.Application.Services.Interfaces;
-using Resume.Domain.ViewModels.Education;
+using Resume.Application.ViewModels.Education;
 
 namespace Resume.Web.Areas.Admin.Controllers
 {

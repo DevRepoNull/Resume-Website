@@ -1,0 +1,128 @@
+@model Resume.Application.ViewModels.Account.LoginViewModel
+
+@{
+    Layout = null;
+    ViewData["Title"] = "ورود به پنل مدیریت";
+}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"]</title>
+    <link rel="shortcut icon" type="image/png" href="~/panel/images/favicon.png">
+    <link href="~/panel/css/style.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Tahoma, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1e2235 0%, #0d101d 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .login-card {
+            width: 100%;
+            max-width: 440px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            overflow: hidden;
+            padding: 40px 35px;
+        }
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .login-header h3 {
+            font-weight: 700;
+            color: #1e2235;
+            margin-bottom: 8px;
+        }
+        .login-header p {
+            color: #6c757d;
+            font-size: 14px;
+        }
+        .form-control {
+            border-radius: 10px;
+            padding: 12px 16px;
+            border: 1px solid #ced4da;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus {
+            border-color: #2258bf;
+            box-shadow: 0 0 0 0.2rem rgba(34, 88, 191, 0.2);
+        }
+        .btn-primary {
+            background-color: #2258bf;
+            border-color: #2258bf;
+            border-radius: 10px;
+            padding: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #1a4494;
+            border-color: #1a4494;
+        }
+        .text-danger {
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <div class="login-header">
+            <h3>ورود به پنل مدیریت</h3>
+            <p>جهت دسترسی به داشبورد، اطلاعات حساب خود را وارد کنید.</p>
+        </div>
+
+        @if (!ViewData.ModelState.IsValid && ViewData.ModelState[string.Empty] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                <div asp-validation-summary="ModelOnly"></div>
+            </div>
+        }
+
+        <form asp-controller="Account" asp-action="Login" method="post">
+            <input type="hidden" asp-for="ReturnUrl" />
+
+            <div class="mb-3">
+                <label asp-for="Username" class="form-label text-dark fw-bold">نام کاربری یا ایمیل</label>
+                <input asp-for="Username" class="form-control text-start" dir="ltr" placeholder="admin" autofocus />
+                <span asp-validation-for="Username" class="text-danger mt-1 d-block"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label text-dark fw-bold">کلمه عبور</label>
+                <input asp-for="Password" class="form-control text-start" dir="ltr" type="password" placeholder="••••••••" />
+                <span asp-validation-for="Password" class="text-danger mt-1 d-block"></span>
+            </div>
+
+            <div class="row d-flex justify-content-between mt-3 mb-4">
+                <div class="col-12">
+                    <div class="form-check custom-checkbox">
+                        <input type="checkbox" class="form-check-input" asp-for="RememberMe">
+                        <label class="form-check-label text-muted" asp-for="RememberMe">مرا به خاطر بسپار</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-block">ورود</button>
+            </div>
+        </form>
+
+        <div class="text-center mt-4">
+            <a href="/" class="text-muted text-decoration-none" style="font-size: 13px;">بازگشت به صفحه اصلی سایت &larr;</a>
+        </div>
+    </div>
+
+</body>
+</html>

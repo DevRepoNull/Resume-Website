@@ -1,5 +1,5 @@
-using Resume.Domain.Models;
-using Resume.Domain.ViewModels.SocialMedia;
+﻿using Resume.Domain.Models;
+using Resume.Application.ViewModels.SocialMedia;
 
 namespace Resume.Application.Services.Interfaces;
 

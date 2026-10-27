@@ -1,20 +1,42 @@
-﻿@model Resume.Domain.ViewModels.Page.IndexPageViewModel
+@model Resume.Application.ViewModels.Page.IndexPageViewModel
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "صفحه اصلی - درباره من";
 }
 
-<!-- About -->
+<!-- About Me -->
 <div class="section mt-0">
-    <h1 class="title title--h1 title__separate">درمورد من</h1>
+    <h1 class="title title--h1 title__separate">در مورد من</h1>
     <div class="pt-2 pt-sm-3">
-        <p>من مدیر خلاق و طراح UI / UX از سیدنی ، استرالیا هستم که در زمینه توسعه وب و رسانه های چاپی کار می کنم. من از تبدیل مشکلات پیچیده به طرح های ساده ، زیبا و بصری لذت می برم.</p>
-        <p class="mb-0">کار من ساخت وب سایت شما به گونه ای است که کاربردی و کاربر پسند باشد اما در عین حال جذاب باشد. علاوه بر این ، من لمس شخصی به محصول شما اضافه می کنم و مطمئن هستم که چشم نواز است و کاربرد آن آسان است. هدف من این است که پیام و هویت شما را با خلاقانه ترین راه بیان کنم. من طراحی وب را برای بسیاری از شرکتهای معروف مارک ایجاد کردم.</p>
+        @if (!string.IsNullOrWhiteSpace(Model.Information?.AboutMe))
+        {
+            <p class="mb-0 text-justify" style="white-space: pre-line; line-height: 2;">@Model.Information.AboutMe</p>
+        }
+        else if (!string.IsNullOrWhiteSpace(Model.Information?.Name))
+        {
+            <p class="mb-2 text-justify" style="line-height: 2;">
+                سلام! من <strong>@Model.Information.Name</strong> هستم؛ @(string.IsNullOrWhiteSpace(Model.Information.Job) ? "متخصص و توسعه‌دهنده نرم‌افزار" : Model.Information.Job).
+            </p>
+            <p class="mb-0 text-justify" style="line-height: 2;">
+                به وب‌سایت شخصی و رزومه من خوش آمدید. می‌توانید از طریق بخش‌های مختلف، سوابق تحصیلی، تجربیات کاری و نمونه‌کارهای من را مشاهده نمایید.
+            </p>
+        }
+        else
+        {
+            <p class="mb-0 text-justify" style="line-height: 2;">
+                به وب‌سایت رزومه شخصی من خوش آمدید. برای ثبت اطلاعات فردی، بیوگرافی و تخصص‌های خود، لطفاً از پنل مدیریت اقدام به ثبت اطلاعات نمایید.
+            </p>
+        }
     </div>
 </div>
 
 @if (Model.ThingIDoList != null && Model.ThingIDoList.Any())
 {
     <partial name="Partials/_ThingIDoPartial" model="@Model.ThingIDoList" />
+}
+
+@if (Model.ExperienceList != null && Model.ExperienceList.Any())
+{
+    <partial name="~/Views/Resume/Partials/_ExperiencePartial.cshtml" model="@Model.ExperienceList" />
 }
 
 @if (Model.CustomerFeedbackList != null && Model.CustomerFeedbackList.Any())

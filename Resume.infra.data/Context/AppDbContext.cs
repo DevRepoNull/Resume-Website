@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using Resume.Application.Context;
 using Resume.Domain.Models;
 
 namespace Resume.Infra.Data.Context;
 
-public class AppDbContext: DbContext
+public class AppDbContext : DbContext, IAppDbContext
 {
     #region Constructor
 
@@ -38,6 +39,8 @@ public class AppDbContext: DbContext
 
     public DbSet<Message> Messages { get; set; }
 
+    public DbSet<User> Users { get; set; }
+
     #endregion
 
     #region On Model Creating
@@ -49,6 +52,12 @@ public class AppDbContext: DbContext
         {
             relationships.DeleteBehavior = DeleteBehavior.Restrict;
         }
+
+        modelBuilder.Entity<User>(entity =>
+        {
+            entity.HasIndex(u => u.Username).IsUnique();
+            entity.HasIndex(u => u.Email).IsUnique();
+        });
 
         base.OnModelCreating(modelBuilder);
     }

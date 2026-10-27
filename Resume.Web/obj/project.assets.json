@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
     "net10.0": {
       "AngleSharp/0.17.1": {
@@ -65,6 +65,15 @@
           "lib/net8.0/Azure.Identity.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "BCrypt.Net-Next/4.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/BCrypt-Net-Next.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/BCrypt-Net-Next.dll": {}
         }
       },
       "DNTCaptcha.Core/5.3.2": {
@@ -2640,9 +2649,10 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
+          "BCrypt.Net-Next": "4.2.0",
           "HtmlSanitizer": "9.0.892",
-          "Resume.Domain": "1.0.0",
-          "Resume.Infra.Data": "1.0.0"
+          "Microsoft.EntityFrameworkCore": "10.0.5",
+          "Resume.Domain": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Resume.Application.dll": {}
@@ -2668,6 +2678,7 @@
           "Microsoft.EntityFrameworkCore": "10.0.5",
           "Microsoft.EntityFrameworkCore.Relational": "10.0.5",
           "Microsoft.EntityFrameworkCore.SqlServer": "10.0.5",
+          "Resume.Application": "1.0.0",
           "Resume.Domain": "1.0.0"
         },
         "compile": {
@@ -2681,7 +2692,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
-          "Resume.Application": "1.0.0"
+          "Resume.Application": "1.0.0",
+          "Resume.Infra.Data": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Resume.Infra.Ioc.dll": {}
@@ -2772,6 +2784,31 @@
         "lib/net8.0/Azure.Identity.xml",
         "lib/netstandard2.0/Azure.Identity.dll",
         "lib/netstandard2.0/Azure.Identity.xml"
+      ]
+    },
+    "BCrypt.Net-Next/4.2.0": {
+      "sha512": "gwLD2KfCuwQesP17aVh4h6lpiMPEVt5Lbpndo0ej903hNUUTtyxt3ARdDjmuydBRTAUICc7OVKVbaOvc6SQYXA==",
+      "type": "package",
+      "path": "bcrypt.net-next/4.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "bcrypt.net-next.4.2.0.nupkg.sha512",
+        "bcrypt.net-next.nuspec",
+        "ico.png",
+        "lib/net10.0/BCrypt-Net-Next.dll",
+        "lib/net10.0/BCrypt.Net-Next.xml",
+        "lib/net462/BCrypt-Net-Next.dll",
+        "lib/net462/BCrypt.Net-Next.xml",
+        "lib/net472/BCrypt-Net-Next.dll",
+        "lib/net472/BCrypt.Net-Next.xml",
+        "lib/net48/BCrypt-Net-Next.dll",
+        "lib/net48/BCrypt.Net-Next.xml",
+        "lib/netstandard2.0/BCrypt-Net-Next.dll",
+        "lib/netstandard2.0/BCrypt.Net-Next.xml",
+        "lib/netstandard2.1/BCrypt-Net-Next.dll",
+        "lib/netstandard2.1/BCrypt.Net-Next.xml",
+        "readme.md"
       ]
     },
     "DNTCaptcha.Core/5.3.2": {
@@ -6894,23 +6931,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\FullStack\\.nuget\\packages\\": {},
+    "C:\\Users\\DevRepoNull\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Web\\Resume.Web.csproj",
+      "projectUniqueName": "D:\\DotNet\\Resume-Website\\Resume.Web\\Resume.Web.csproj",
       "projectName": "Resume.Web",
-      "projectPath": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Web\\Resume.Web.csproj",
-      "packagesPath": "C:\\Users\\FullStack\\.nuget\\packages\\",
-      "outputPath": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Web\\obj\\",
+      "projectPath": "D:\\DotNet\\Resume-Website\\Resume.Web\\Resume.Web.csproj",
+      "packagesPath": "C:\\Users\\DevRepoNull\\.nuget\\packages\\",
+      "outputPath": "D:\\DotNet\\Resume-Website\\Resume.Web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\FullStack\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DevRepoNull\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -6918,21 +6955,22 @@
         "net10.0"
       ],
       "sources": {
-        "C:\\Program Files\\dotnet\\library-packs": {},
-        "https://mirror-nuget.runflare.com/v3/index.json": {}
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Application\\Resume.Application.csproj": {
-              "projectPath": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Application\\Resume.Application.csproj"
+            "D:\\DotNet\\Resume-Website\\Resume.Application\\Resume.Application.csproj": {
+              "projectPath": "D:\\DotNet\\Resume-Website\\Resume.Application\\Resume.Application.csproj"
             },
-            "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.infra.data\\Resume.Infra.Data.csproj": {
-              "projectPath": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.infra.data\\Resume.Infra.Data.csproj"
+            "D:\\DotNet\\Resume-Website\\Resume.infra.data\\Resume.Infra.Data.csproj": {
+              "projectPath": "D:\\DotNet\\Resume-Website\\Resume.infra.data\\Resume.Infra.Data.csproj"
             },
-            "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Infra.Ioc\\Resume.Infra.Ioc.csproj": {
-              "projectPath": "D:\\Real Project\\ArianResume\\ResumeWebsite\\Resume.Infra.Ioc\\Resume.Infra.Ioc.csproj"
+            "D:\\DotNet\\Resume-Website\\Resume.Infra.Ioc\\Resume.Infra.Ioc.csproj": {
+              "projectPath": "D:\\DotNet\\Resume-Website\\Resume.Infra.Ioc\\Resume.Infra.Ioc.csproj"
             }
           }
         }
@@ -6947,10 +6985,11 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "10.0.400"
     },
     "frameworks": {
       "net10.0": {
+        "framework": "net10.0",
         "targetAlias": "net10.0",
         "dependencies": {
           "DNTCaptcha.Core": {
@@ -7003,7 +7042,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.402/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

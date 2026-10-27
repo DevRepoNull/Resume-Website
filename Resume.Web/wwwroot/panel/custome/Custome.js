@@ -1,4 +1,4 @@
-﻿//General loading methods
+//General loading methods
 function StartLoading() {
     $("body").waitMe({
         effect: 'bounce',
@@ -125,6 +125,8 @@ function LoadEducationFormModal(id) {
 
             $('#EducationForm').data('validator', null);
             $.validator.unobtrusive.parse("#EducationForm");
+
+            InitPersianDatePickers();
 
             var modal = new bootstrap.Modal(document.getElementById('modal-main'));
             modal.show();
@@ -410,6 +412,8 @@ function LoadExperienceFormModal(id) {
 
             $('#ExperienceForm').data('validator', null);
             $.validator.unobtrusive.parse("#ExperienceForm");
+
+            InitPersianDatePickers();
 
             var modal = new bootstrap.Modal(document.getElementById('modal-main'));
             modal.show();
@@ -886,6 +890,8 @@ function LoadInformationFormModal() {
             $('#InformationForm').data('validator', null);
             $.validator.unobtrusive.parse("#InformationForm");
 
+            InitPersianDatePickers();
+
             var modal = new bootstrap.Modal(document.getElementById('modal-main'));
             modal.show();
         },
@@ -962,3 +968,43 @@ Swal.fire({
 
 });
 }
+
+// Persian DatePicker Initialization
+function InitPersianDatePickers() {
+    if (typeof mds === 'undefined' || !mds.MdsPersianDateTimePicker) {
+        return;
+    }
+    $('.btn-persian-datepicker').each(function () {
+        var btn = this;
+        var $group = $(this).closest('.input-group');
+        var $input = $group.find('.persian-date-picker');
+        if ($input.length > 0) {
+            var inputId = $input.attr('id');
+            if (inputId) {
+                try {
+                    new mds.MdsPersianDateTimePicker(btn, {
+                        targetTextSelector: '#' + inputId,
+                        dateFormat: 'yyyy/MM/dd',
+                        textFormat: 'yyyy/MM/dd',
+                        isGregorian: false,
+                        enableTimePicker: false,
+                        placement: 'bottom'
+                    });
+                } catch (e) {
+                    console.error('Error init PersianDateTimePicker:', e);
+                }
+            }
+        }
+    });
+}
+
+$(document).ready(function () {
+    InitPersianDatePickers();
+
+    $(document).on('click', '.persian-date-picker', function () {
+        var $btn = $(this).closest('.input-group').find('.btn-persian-datepicker');
+        if ($btn.length > 0) {
+            $btn.trigger('click');
+        }
+    });
+});

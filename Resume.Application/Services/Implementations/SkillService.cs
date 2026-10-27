@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Resume.Application.Services.Interfaces;
 using Resume.Domain.Models;
-using Resume.Domain.ViewModels.Skill;
-using Resume.Infra.Data.Context;
+using Resume.Application.ViewModels.Skill;
+using Resume.Application.Context;
 
 namespace Resume.Application.Services.Implementations;
 
@@ -10,23 +10,23 @@ public class SkillService : ISkillService
 {
     #region Skill Constructor
 
-    private readonly AppDbContext _appDbContext;
+    private readonly IAppDbContext _IAppDbContext;
 
-    public SkillService(AppDbContext appDbContext)
+    public SkillService(IAppDbContext IAppDbContext)
     {
-        _appDbContext = appDbContext;
+        _IAppDbContext = IAppDbContext;
     }
 
     #endregion
 
     public async Task<Skill> GetSkillByIdAsync(long id)
     {
-        return await _appDbContext.Skills.FirstOrDefaultAsync(s => s.Id == id);
+        return await _IAppDbContext.Skills.FirstOrDefaultAsync(s => s.Id == id);
     }
 
     public async Task<List<SkillViewModel>> GetSkillDataAsync()
     {
-        List<SkillViewModel> model = await _appDbContext.Skills
+        List<SkillViewModel> model = await _IAppDbContext.Skills
             .OrderBy(s => s.Order)
             .Select(s => new SkillViewModel()
             {
@@ -68,8 +68,8 @@ public class SkillService : ISkillService
                 Percentage = skill.Percentage,
                 Order = skill.Order
             };
-            await _appDbContext.Skills.AddAsync(newSkill);
-            await _appDbContext.SaveChangesAsync();
+            await _IAppDbContext.Skills.AddAsync(newSkill);
+            await _IAppDbContext.SaveChangesAsync();
             return true;
         }
 
@@ -79,8 +79,8 @@ public class SkillService : ISkillService
         updateSkill.Percentage = skill.Percentage;
         updateSkill.Order = skill.Order;
 
-        _appDbContext.Skills.Update(updateSkill);
-        await _appDbContext.SaveChangesAsync();
+        _IAppDbContext.Skills.Update(updateSkill);
+        await _IAppDbContext.SaveChangesAsync();
         return true;
     }
 
@@ -91,8 +91,8 @@ public class SkillService : ISkillService
         if (delSkill == null)
             return false;
 
-        _appDbContext.Skills.Remove(delSkill);
-        await _appDbContext.SaveChangesAsync();
+        _IAppDbContext.Skills.Remove(delSkill);
+        await _IAppDbContext.SaveChangesAsync();
         return true;
     }
 }

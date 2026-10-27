@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Resume.Application.Services.Interfaces;
 using Resume.Domain.Models;
-using Resume.Domain.ViewModels.Experience;
-using Resume.Infra.Data.Context;
+using Resume.Application.ViewModels.Experience;
+using Resume.Application.Context;
 
 namespace Resume.Application.Services.Implementations;
 
@@ -10,9 +10,9 @@ public class ExperienceService : IExperienceService
 {
     #region Experience Constructor
 
-    private readonly AppDbContext _dbContext;
+    private readonly IAppDbContext _dbContext;
 
-    public ExperienceService(AppDbContext dbContext)
+    public ExperienceService(IAppDbContext dbContext)
     {
         _dbContext = dbContext;
     }

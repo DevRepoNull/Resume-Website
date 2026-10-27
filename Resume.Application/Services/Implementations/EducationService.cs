@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Resume.Application.Services.Interfaces;
 using Resume.Domain.Models;
-using Resume.Domain.ViewModels.Education;
-using Resume.Infra.Data.Context;
+using Resume.Application.ViewModels.Education;
+using Resume.Application.Context;
 
 namespace Resume.Application.Services.Implementations;
 
@@ -10,23 +10,23 @@ public class EducationService : IEducationService
 {
     #region Education Constructor
 
-    private readonly AppDbContext _appDbContext;
+    private readonly IAppDbContext _IAppDbContext;
 
-    public EducationService(AppDbContext appDbContext)
+    public EducationService(IAppDbContext IAppDbContext)
     {
-        _appDbContext = appDbContext;
+        _IAppDbContext = IAppDbContext;
     }
 
     #endregion
 
     public async Task<Education> GetEducationByIdAsync(long id)
     {
-        return await _appDbContext.Educations.FirstOrDefaultAsync(e => e.Id == id);
+        return await _IAppDbContext.Educations.FirstOrDefaultAsync(e => e.Id == id);
     }
 
     public async Task<List<EducationViewModel>> GetEducationDataListAsync()
     {
-        List<EducationViewModel> model = await _appDbContext.Educations.OrderBy(e => e.Order)
+        List<EducationViewModel> model = await _IAppDbContext.Educations.OrderBy(e => e.Order)
             .Select(e => new EducationViewModel()
             {
                 Order = e.Order,
@@ -74,8 +74,8 @@ public class EducationService : IEducationService
                 Order = education.Order
             };
 
-            await _appDbContext.Educations.AddAsync(newEducation);
-            await _appDbContext.SaveChangesAsync();
+            await _IAppDbContext.Educations.AddAsync(newEducation);
+            await _IAppDbContext.SaveChangesAsync();
             return true;
         }
 
@@ -90,8 +90,8 @@ public class EducationService : IEducationService
         updateEducation.EndDate = education.EndDate;
         updateEducation.Order = education.Order;
 
-        _appDbContext.Update(updateEducation);
-        await _appDbContext.SaveChangesAsync();
+        _IAppDbContext.Educations.Update(updateEducation);
+        await _IAppDbContext.SaveChangesAsync();
         return true;
     }
 
@@ -102,8 +102,8 @@ public class EducationService : IEducationService
         if (education == null)
             return false;
 
-        _appDbContext.Educations.Remove(education);
-        await _appDbContext.SaveChangesAsync();
+        _IAppDbContext.Educations.Remove(education);
+        await _IAppDbContext.SaveChangesAsync();
         return true;
     }
 }

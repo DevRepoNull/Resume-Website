@@ -1,8 +1,8 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Resume.Application.Services.Interfaces;
 using Resume.Domain.Models;
-using Resume.Domain.ViewModels.Portfolio;
-using Resume.Infra.Data.Context;
+using Resume.Application.ViewModels.Portfolio;
+using Resume.Application.Context;
 
 namespace Resume.Application.Services.Implementations;
 
@@ -10,11 +10,11 @@ public class PortfolioService : IPortfolioService
 {
     #region Portfolio Constructor
 
-    private readonly AppDbContext _appDbContext;
+    private readonly IAppDbContext _IAppDbContext;
 
-    public PortfolioService(AppDbContext appDbContext)
+    public PortfolioService(IAppDbContext IAppDbContext)
     {
-        _appDbContext = appDbContext;
+        _IAppDbContext = IAppDbContext;
     }
 
     #endregion
@@ -23,12 +23,12 @@ public class PortfolioService : IPortfolioService
 
     public async Task<Portfolio> GetPortfolioByIdAsync(long id)
     {
-        return await _appDbContext.Portfolios.FirstOrDefaultAsync(p => p.Id == id);
+        return await _IAppDbContext.Portfolios.FirstOrDefaultAsync(p => p.Id == id);
     }
 
     public async Task<List<PortfolioViewModel>> GetPortfolioDataAsync()
     {
-        List<PortfolioViewModel> model = await _appDbContext.Portfolios
+        List<PortfolioViewModel> model = await _IAppDbContext.Portfolios
             .OrderBy(p => p.Order)
             .Select(p => new PortfolioViewModel()
             {
@@ -90,8 +90,8 @@ public class PortfolioService : IPortfolioService
                 PortfolioCategoryId = portfolio.PortfolioCategoryId
             };
 
-            await _appDbContext.Portfolios.AddAsync(newPortfolio);
-            await _appDbContext.SaveChangesAsync();
+            await _IAppDbContext.Portfolios.AddAsync(newPortfolio);
+            await _IAppDbContext.SaveChangesAsync();
             return true;
         }
 
@@ -104,8 +104,8 @@ public class PortfolioService : IPortfolioService
         currentPortfolio.Order = portfolio.Order;
         currentPortfolio.PortfolioCategoryId = portfolio.PortfolioCategoryId;
 
-        _appDbContext.Portfolios.Update(currentPortfolio);
-        await _appDbContext.SaveChangesAsync();
+        _IAppDbContext.Portfolios.Update(currentPortfolio);
+        await _IAppDbContext.SaveChangesAsync();
         return true;
     }
 
@@ -119,8 +119,8 @@ public class PortfolioService : IPortfolioService
         if (currentPortfolio == null)
             return false;
 
-        _appDbContext.Portfolios.Remove(currentPortfolio);
-        await _appDbContext.SaveChangesAsync();
+        _IAppDbContext.Portfolios.Remove(currentPortfolio);
+        await _IAppDbContext.SaveChangesAsync();
         return true;
     }
 
@@ -130,12 +130,12 @@ public class PortfolioService : IPortfolioService
 
     public async Task<PortfolioCategory> GetPortfolioCategoryByIdAsync(long id)
     {
-        return await _appDbContext.PortfolioCategories.FirstOrDefaultAsync(pc => pc.Id == id);
+        return await _IAppDbContext.PortfolioCategories.FirstOrDefaultAsync(pc => pc.Id == id);
     }
 
     public async Task<List<PortfolioCategoryViewModel>> GetPortfolioCategoryDataAsync()
     {
-        List<PortfolioCategoryViewModel> model = await _appDbContext.PortfolioCategories
+        List<PortfolioCategoryViewModel> model = await _IAppDbContext.PortfolioCategories
             .OrderBy(pc => pc.Order)
             .Select(pc => new PortfolioCategoryViewModel()
             {
@@ -178,8 +178,8 @@ public class PortfolioService : IPortfolioService
                 Order = portfolioCategory.Order
             };
 
-            await _appDbContext.PortfolioCategories.AddAsync(newPortfolioCategory);
-            await _appDbContext.SaveChangesAsync();
+            await _IAppDbContext.PortfolioCategories.AddAsync(newPortfolioCategory);
+            await _IAppDbContext.SaveChangesAsync();
             return true;
         }
 
@@ -192,8 +192,8 @@ public class PortfolioService : IPortfolioService
         currentPortfolioCategory.LatinTitle = portfolioCategory.LatinTitle;
         currentPortfolioCategory.Order = portfolioCategory.Order;
 
-        _appDbContext.PortfolioCategories.Update(currentPortfolioCategory);
-        await _appDbContext.SaveChangesAsync();
+        _IAppDbContext.PortfolioCategories.Update(currentPortfolioCategory);
+        await _IAppDbContext.SaveChangesAsync();
         return true;
     }
 
@@ -204,8 +204,8 @@ public class PortfolioService : IPortfolioService
         if (portfolioCategory == null)
             return false;
 
-        _appDbContext.PortfolioCategories.Remove(portfolioCategory);
-        await _appDbContext.SaveChangesAsync();
+        _IAppDbContext.PortfolioCategories.Remove(portfolioCategory);
+        await _IAppDbContext.SaveChangesAsync();
         return true;
     }
 

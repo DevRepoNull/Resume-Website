@@ -1,7 +1,7 @@
 using DNTCaptcha.Core;
 using Microsoft.AspNetCore.Mvc;
 using Resume.Application.Services.Interfaces;
-using Resume.Domain.ViewModels.Message;
+using Resume.Application.ViewModels.Message;
 
 namespace Resume.Web.Controllers;
 

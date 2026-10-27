@@ -1,5 +1,5 @@
-using Resume.Domain.Models;
-using Resume.Domain.ViewModels.Information;
+﻿using Resume.Domain.Models;
+using Resume.Application.ViewModels.Information;
 
 namespace Resume.Application.Services.Interfaces;
 

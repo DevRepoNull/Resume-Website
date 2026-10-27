@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Resume.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
+    [AutoValidateAntiforgeryToken]
     public class AdminBaseController : Controller
     {
         protected string SuccessMessage = "SuccessMessage";
@@ -10,7 +13,6 @@ namespace Resume.Web.Areas.Admin.Controllers
         protected string InfoMessage = "InfoMessage";
         protected string ErrorMessage = "ErrorMessage";
 
-        // Task : راهی مشترک پیدا کنیم بجای اینکه هربار عنوان جدول ها رو دستی بنویسیم از یک متن ثابت بخونیم
         #region General Title Table Name
 
         //protected const string Title = "عنوان";

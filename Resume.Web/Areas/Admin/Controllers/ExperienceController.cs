@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Resume.Application.Services.Interfaces;
 using Resume.Domain.Models;
-using Resume.Domain.ViewModels.Experience;
+using Resume.Application.ViewModels.Experience;
 
 namespace Resume.Web.Areas.Admin.Controllers
 {

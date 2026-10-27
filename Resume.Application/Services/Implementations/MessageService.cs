@@ -2,8 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Resume.Application.Security;
 using Resume.Application.Services.Interfaces;
 using Resume.Domain.Models;
-using Resume.Domain.ViewModels.Message;
-using Resume.Infra.Data.Context;
+using Resume.Application.ViewModels.Message;
+using Resume.Application.Context;
 
 namespace Resume.Application.Services.Implementations;
 
@@ -11,18 +11,18 @@ public class MessageService : IMessageService
 {
     #region Message Constructor
 
-    private readonly AppDbContext _appDbContext;
+    private readonly IAppDbContext _IAppDbContext;
 
-    public MessageService(AppDbContext appDbContext)
+    public MessageService(IAppDbContext IAppDbContext)
     {
-        _appDbContext = appDbContext;
+        _IAppDbContext = IAppDbContext;
     }
 
     #endregion
 
     public async Task<Message> GetMessageByIdAsync(long id)
     {
-        return await _appDbContext.Messages.SingleOrDefaultAsync(m => m.Id == id);
+        return await _IAppDbContext.Messages.SingleOrDefaultAsync(m => m.Id == id);
     }
 
     public async Task<bool> CreateMessageAsync(CreateMessageViewModel message)
@@ -36,8 +36,8 @@ public class MessageService : IMessageService
                 Text = message.Text.SanitizeText()
             };
             
-            await _appDbContext.AddRangeAsync(model);
-            await _appDbContext.SaveChangesAsync();
+            await _IAppDbContext.Messages.AddAsync(model);
+            await _IAppDbContext.SaveChangesAsync();
             return true;
         }
         catch (Exception e)
@@ -48,7 +48,7 @@ public class MessageService : IMessageService
 
     public async Task<List<MessageViewModel>> GetMessageDataAsync()
     {
-        List<MessageViewModel> result = await _appDbContext.Messages
+        List<MessageViewModel> result = await _IAppDbContext.Messages
             .Select(m => new MessageViewModel()
             {
                 Id = m.Id,
@@ -70,8 +70,8 @@ public class MessageService : IMessageService
         if (result == null)
             return false;
 
-        _appDbContext.Messages.Remove(result);
-        await _appDbContext.SaveChangesAsync();
+        _IAppDbContext.Messages.Remove(result);
+        await _IAppDbContext.SaveChangesAsync();
         return true;
     }
 }

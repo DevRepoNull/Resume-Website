@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Resume.Application.Extensions;
 using Resume.Application.Generator;
 using Resume.Application.Services.Interfaces;
 using Resume.Application.StaticTools;
-using Resume.Domain.ViewModels.Information;
+using Resume.Application.ViewModels.Information;
 
 namespace Resume.Web.Areas.Admin.Controllers;
 
@@ -20,6 +20,12 @@ public class InformationController : AdminBaseController
 
     #endregion
 
+    public async Task<IActionResult> Index()
+    {
+        InformationViewModel data = await _informationService.GetInformationDataAsync();
+        return View(data);
+    }
+
     public async Task<IActionResult> LoadInformationFormModalAsync()
     {
         UpsertInformationViewModel model = await _informationService.FillUpsertInformationViewModelAsync();
@@ -27,6 +33,7 @@ public class InformationController : AdminBaseController
         return PartialView("_InformationFormModalPartial", model);
     }
 
+    [HttpPost]
     public async Task<IActionResult> SubmitInformationFormModalAsync(UpsertInformationViewModel information)
     {
         var result = await _informationService.UpsertInformationAsync(information);

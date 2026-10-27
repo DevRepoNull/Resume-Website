@@ -1,8 +1,8 @@
-﻿@model List<EducationViewModel>
+@model List<EducationViewModel>
 
-<!-- Experience -->
+<!-- Education -->
 <div class="section">
-    <h2 class="title title--h2"><i class="fas fa-graduation-cap"></i> تحصیلات</h2>
+    <h2 class="title title--h2"><i class="fas fa-graduation-cap text-primary me-2"></i> سوابق تحصیلی</h2>
     <div class="timeline">
         
         @foreach (EducationViewModel item in Model)
@@ -10,8 +10,28 @@
             <!-- Item -->
             <article class="timeline__item">
                 <h5 class="title title--h3 timeline__title">@item.Title</h5>
-                <span class="timeline__period">@item.EndDate - @item.StartDate</span>
-                <p class="timeline__description">@item.Description</p>
+                @if (!string.IsNullOrWhiteSpace(item.StartDate) || !string.IsNullOrWhiteSpace(item.EndDate))
+                {
+                    <span class="timeline__period d-inline-block mt-1">
+                        <i class="far fa-calendar-alt me-1 text-muted"></i>
+                        @if (!string.IsNullOrWhiteSpace(item.StartDate) && !string.IsNullOrWhiteSpace(item.EndDate))
+                        {
+                            <span>@item.StartDate تا @item.EndDate</span>
+                        }
+                        else if (!string.IsNullOrWhiteSpace(item.StartDate))
+                        {
+                            <span>از @item.StartDate</span>
+                        }
+                        else
+                        {
+                            <span>تا @item.EndDate</span>
+                        }
+                    </span>
+                }
+                @if (!string.IsNullOrWhiteSpace(item.Description))
+                {
+                    <p class="timeline__description">@item.Description</p>
+                }
             </article>
         }
 

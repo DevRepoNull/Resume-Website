@@ -31,4 +31,7 @@ public class Information
     public string ResumeFile { get; set; }
 
     public string MapSrc { get; set; }
+
+    [StringLength(4000)]
+    public string AboutMe { get; set; }
 }

@@ -1,9 +1,11 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
+using Resume.Application.Context;
+using Resume.Application.Security;
 using Resume.Application.Services.Implementations;
 using Resume.Application.Services.Interfaces;
+using Resume.Infra.Data.Context;
 
 namespace Resume.Infra.Ioc;
-
 
 /*
  * این قسمت که معروف به inversion of control می باشد
@@ -17,7 +19,15 @@ public class DependencyContainers
     // We Use Collection Data's
     public static void RegisterService(IServiceCollection service)
     {
-        // We say call response time
+        // Database Context Abstraction
+        service.AddScoped<IAppDbContext>(provider => provider.GetRequiredService<AppDbContext>());
+
+        // Security Services
+        service.AddSingleton<IPasswordHasher, PasswordHasher>();
+
+        // Application Services
+        service.AddScoped<IUserService, UserService>();
+
         service.AddScoped<IThingIDoService, ThingIDoService>();
 
         service.AddScoped<ICustomerFeedBackService, CustomerFeedBackService>();

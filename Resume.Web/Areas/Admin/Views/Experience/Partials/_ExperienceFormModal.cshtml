@@ -1,14 +1,16 @@
-﻿@model UpsertExperienceViewModel
+@model UpsertExperienceViewModel
 @{
     bool isCreate = Model.Id == 0 ? true : false;
 }
 
 <!-- Start Form -->
-<form id="ExperienceForm" asp-area="Admin" asp-controller="Experience" asp-action="SubmitExperienceFormModal"
+<form id="ExperienceForm" asp-area="Admin" asp-controller="Experience" asp-action="SubmitExperienceFormModal" method="post"
       data-ajax="true" data-ajax-begin="StartLoading" data-ajax-success="ExperienceFormSubmited">
+    @Html.AntiForgeryToken()
+
     <!--Modal Header-->
     <div class="modal-header">
-        <h5 class="modal-title">@(isCreate ? "ایجاد" : "ویرایش")</h5>
+        <h5 class="modal-title">@(isCreate ? "ایجاد سابقه کاری جدید" : "ویرایش سابقه کاری")</h5>
     </div>
 
     <!--Modal Body-->
@@ -30,11 +32,7 @@
                             <span class="text-danger">*</span>
                         </label>
                         <div class="col-lg-9">
-                            <input type="text" class="form-control" asp-for="Title">
-
-                            @* <div class="invalid-feedback">
-                                <span asp-validation-for="Title"></span>
-                            </div> *@
+                            <input type="text" class="form-control" asp-for="Title" placeholder="مثال: توسعه‌دهنده ارشد دات‌نت">
                             <small>
                                 <span asp-validation-for="Title" class="text-danger"></span>
                             </small>
@@ -47,8 +45,7 @@
                             <span class="text-danger">*</span>
                         </label>
                         <div class="col-lg-9">
-                            <input type="text" class="form-control" asp-for="Description">
-
+                            <textarea class="form-control" asp-for="Description" rows="3" placeholder="نام شرکت و شرح مسئولیت‌ها"></textarea>
                             <small>
                                 <span asp-validation-for="Description" class="text-danger"></span>
                             </small>
@@ -61,8 +58,13 @@
                             <span class="text-danger">*</span>
                         </label>
                         <div class="col-lg-9">
-                            <input type="text" class="form-control" asp-for="StartDate">
-
+                            <div class="input-group">
+                                <span class="input-group-text cursor-pointer btn-persian-datepicker" id="pdtp-exp-start" title="انتخاب تاریخ شمسی">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                                <input type="text" class="form-control persian-date-picker" asp-for="StartDate" id="ExpStartDate" placeholder="مثال: 1399/01/15 یا 1399">
+                            </div>
+                            <small class="text-muted d-block mt-1">می‌توانید از تقویم شمسی انتخاب کنید یا سال را وارد نمایید.</small>
                             <small>
                                 <span asp-validation-for="StartDate" class="text-danger"></span>
                             </small>
@@ -75,8 +77,13 @@
                             <span class="text-danger">*</span>
                         </label>
                         <div class="col-lg-9">
-                            <input type="text" class="form-control" asp-for="EndDate">
-
+                            <div class="input-group">
+                                <span class="input-group-text cursor-pointer btn-persian-datepicker" id="pdtp-exp-end" title="انتخاب تاریخ شمسی">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                                <input type="text" class="form-control persian-date-picker" asp-for="EndDate" id="ExpEndDate" placeholder="مثال: 1403/06/31 یا اکنون">
+                            </div>
+                            <small class="text-muted d-block mt-1">می‌توانید از تقویم شمسی انتخاب کنید یا سال را وارد نمایید.</small>
                             <small>
                                 <span asp-validation-for="EndDate" class="text-danger"></span>
                             </small>
@@ -90,7 +97,6 @@
                         </label>
                         <div class="col-lg-9">
                             <input type="number" class="form-control" asp-for="Order">
-
                             <small>
                                 <span asp-validation-for="Order" class="text-danger"></span>
                             </small>

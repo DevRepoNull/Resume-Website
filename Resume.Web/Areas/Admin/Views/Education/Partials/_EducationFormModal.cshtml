@@ -1,14 +1,16 @@
-﻿@model UpsertEducationViewModel
+@model UpsertEducationViewModel
 @{
     bool isCreate = Model.Id == 0 ? true : false;
 }
 
 <!-- Start Form -->
-<form id="EducationForm" asp-area="Admin" asp-controller="Education" asp-action="SubmitEducationFormModal"
+<form id="EducationForm" asp-area="Admin" asp-controller="Education" asp-action="SubmitEducationFormModal" method="post"
       data-ajax="true" data-ajax-begin="StartLoading" data-ajax-success="EducationFormSubmited">
+    @Html.AntiForgeryToken()
+
     <!--Modal Header-->
     <div class="modal-header">
-        <h5 class="modal-title">@(isCreate ? "ایجاد" : "ویرایش")</h5>
+        <h5 class="modal-title">@(isCreate ? "ایجاد تحصیلات جدید" : "ویرایش تحصیلات")</h5>
     </div>
 
     <!--Modal Body-->
@@ -30,11 +32,7 @@
                             <span class="text-danger">*</span>
                         </label>
                         <div class="col-lg-9">
-                            <input type="text" class="form-control" asp-for="Title">
-
-                            @* <div class="invalid-feedback">
-                                <span asp-validation-for="Title"></span>
-                            </div> *@
+                            <input type="text" class="form-control" asp-for="Title" placeholder="مثال: کارشناسی مهندسی کامپیوتر">
                             <small>
                                 <span asp-validation-for="Title" class="text-danger"></span>
                             </small>
@@ -44,11 +42,9 @@
                     <div class="mb-3 row">
                         <label class="col-lg-3 col-form-label" asp-for="Description">
                             @Html.DisplayNameFor(t => Model.Description)
-                            <span class="text-danger">*</span>
                         </label>
                         <div class="col-lg-9">
-                            <input type="text" class="form-control" asp-for="Description">
-
+                            <textarea class="form-control" asp-for="Description" rows="3" placeholder="توضیحات و گرایش"></textarea>
                             <small>
                                 <span asp-validation-for="Description" class="text-danger"></span>
                             </small>
@@ -61,8 +57,13 @@
                             <span class="text-danger">*</span>
                         </label>
                         <div class="col-lg-9">
-                            <input type="text" class="form-control" asp-for="StartDate">
-
+                            <div class="input-group">
+                                <span class="input-group-text cursor-pointer btn-persian-datepicker" id="pdtp-edu-start" title="انتخاب تاریخ شمسی">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                                <input type="text" class="form-control persian-date-picker" asp-for="StartDate" id="StartDate" placeholder="مثال: 1398/07/01 یا 1398">
+                            </div>
+                            <small class="text-muted d-block mt-1">می‌توانید از تقویم شمسی انتخاب کنید یا سال را وارد نمایید.</small>
                             <small>
                                 <span asp-validation-for="StartDate" class="text-danger"></span>
                             </small>
@@ -75,8 +76,13 @@
                             <span class="text-danger">*</span>
                         </label>
                         <div class="col-lg-9">
-                            <input type="text" class="form-control" asp-for="EndDate">
-
+                            <div class="input-group">
+                                <span class="input-group-text cursor-pointer btn-persian-datepicker" id="pdtp-edu-end" title="انتخاب تاریخ شمسی">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                                <input type="text" class="form-control persian-date-picker" asp-for="EndDate" id="EndDate" placeholder="مثال: 1402/04/31 یا 1402">
+                            </div>
+                            <small class="text-muted d-block mt-1">می‌توانید از تقویم شمسی انتخاب کنید یا سال را وارد نمایید.</small>
                             <small>
                                 <span asp-validation-for="EndDate" class="text-danger"></span>
                             </small>
@@ -90,7 +96,6 @@
                         </label>
                         <div class="col-lg-9">
                             <input type="number" class="form-control" asp-for="Order">
-
                             <small>
                                 <span asp-validation-for="Order" class="text-danger"></span>
                             </small>

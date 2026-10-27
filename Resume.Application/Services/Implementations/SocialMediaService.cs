@@ -1,8 +1,8 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Resume.Application.Services.Interfaces;
 using Resume.Domain.Models;
-using Resume.Domain.ViewModels.SocialMedia;
-using Resume.Infra.Data.Context;
+using Resume.Application.ViewModels.SocialMedia;
+using Resume.Application.Context;
 
 namespace Resume.Application.Services.Implementations;
 
@@ -10,23 +10,23 @@ public class SocialMediaService : ISocialMediaService
 {
     #region Social Media Service
 
-    private readonly AppDbContext _appDbContext;
+    private readonly IAppDbContext _IAppDbContext;
 
-    public SocialMediaService(AppDbContext appDbContext)
+    public SocialMediaService(IAppDbContext IAppDbContext)
     {
-        _appDbContext = appDbContext;
+        _IAppDbContext = IAppDbContext;
     }
 
     #endregion
 
     public async Task<SocialMedia> GetSocialMediaByIdAsync(long id)
     {
-        return await _appDbContext.SocialMedias.FirstOrDefaultAsync(s => s.Id == id);
+        return await _IAppDbContext.SocialMedias.FirstOrDefaultAsync(s => s.Id == id);
     }
 
     public async Task<List<SocialMediaViewModel>> GetSocialMediaDataAsync()
     {
-        List<SocialMediaViewModel> model = await _appDbContext.SocialMedias
+        List<SocialMediaViewModel> model = await _IAppDbContext.SocialMedias
             .OrderBy(s => s.Order)
             .Select(s => new SocialMediaViewModel()
             {
@@ -69,8 +69,8 @@ public class SocialMediaService : ISocialMediaService
                 Order = socialMedia.Order
             };
 
-            await _appDbContext.SocialMedias.AddAsync(newSocialMedia);
-            await _appDbContext.SaveChangesAsync();
+            await _IAppDbContext.SocialMedias.AddAsync(newSocialMedia);
+            await _IAppDbContext.SaveChangesAsync();
             return true;
         }
 
@@ -83,8 +83,8 @@ public class SocialMediaService : ISocialMediaService
         currentSocialMedia.Link = socialMedia.Link;
         currentSocialMedia.Order = socialMedia.Order;
 
-        _appDbContext.SocialMedias.Update(currentSocialMedia);
-        await _appDbContext.SaveChangesAsync();
+        _IAppDbContext.SocialMedias.Update(currentSocialMedia);
+        await _IAppDbContext.SaveChangesAsync();
         return true;
     }
 
@@ -98,8 +98,8 @@ public class SocialMediaService : ISocialMediaService
         if (currentSocialMedia == null)
             return false;
 
-        _appDbContext.SocialMedias.Remove(currentSocialMedia);
-        await _appDbContext.SaveChangesAsync();
+        _IAppDbContext.SocialMedias.Remove(currentSocialMedia);
+        await _IAppDbContext.SaveChangesAsync();
         return true;
     }
 }
